@@ -19,7 +19,7 @@ export default hopeTheme({
   //
   darkmode:"toggle",
 
-  docsBranch: "master",
+  docsBranch: "main",
 
   pageInfo: ["Original", "Date", "Category", "Tag", "ReadingTime"],
   //
