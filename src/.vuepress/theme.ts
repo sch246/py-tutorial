@@ -59,7 +59,7 @@ export default hopeTheme({
     // 你应该自行生成自己的评论服务
     comment: {
       provider: "Waline",
-      serverURL: "https://waline.python.sch246.com",
+      serverURL: "https://waline-python.sch246.com",
     },
 
     components: {
