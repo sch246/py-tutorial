@@ -9,8 +9,6 @@ export default defineUserConfig({
   description: "sch246的python教程",
 
   head: [
-    ['link', { rel: 'stylesheet', href: '/pyscript/release/core.css' }],
-    ['script', { type: 'module', src: '/pyscript/release/core.js' }],
   ],
 
   theme,
