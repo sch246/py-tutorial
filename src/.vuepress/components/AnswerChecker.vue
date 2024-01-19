@@ -29,6 +29,7 @@ function celebrate() {
 
 const result = 'result-'+counter()
 const target = ref(null)
+let button
 
 function checking(){
     wait(()=>target.value.querySelector('.py-editor-box .py-editor-output'),3000)
@@ -50,7 +51,10 @@ function checking(){
 onMounted(()=>{
     confetti = new JSConfetti()
     wait(()=>target.value.querySelector('.py-editor-box .py-editor-input .py-editor-run-button'),3000)
-    .then(button=>button.addEventListener("click", checking))
+    .then(b=>{
+        button = b
+        button.addEventListener("click", checking)
+    })
 })
 
 onUnmounted(()=>{
