@@ -11,6 +11,7 @@ export default defineUserConfig({
   head: [
     ['link', { rel: 'stylesheet', href: '/pyscript/release/core.css' }],
     ['script', { type: 'module', src: '/pyscript/release/core.js' }],
+    ['script', { src: 'https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js' }]
   ],
 
   theme,
