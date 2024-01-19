@@ -14,6 +14,9 @@ devDependencies:
   flowchart.ts:
     specifier: ^3.0.0
     version: 3.0.0
+  js-confetti:
+    specifier: ^0.12.0
+    version: 0.12.0
   katex:
     specifier: ^0.16.9
     version: 0.16.9
@@ -2283,6 +2286,10 @@ packages:
 
   /isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
+    dev: true
+
+  /js-confetti@0.12.0:
+    resolution: {integrity: sha512-1R0Akxn3Zn82pMqW65N1V2NwKkZJ75bvBN/VAb36Ya0YHwbaSiAJZVRr/19HBxH/O8x2x01UFAbYI18VqlDN6g==}
     dev: true
 
   /js-yaml@3.14.1:

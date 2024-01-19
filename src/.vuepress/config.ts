@@ -34,16 +34,20 @@ export default defineUserConfig({
       let a = md.renderer.rules.fence
       md.renderer.rules.fence = function(tokens, idx, options, env, self) {
         const token = tokens[idx];
-        const info = token.info.trim()
+        let info = token.info.trim()
         // 检查语言是否为 "py edit"
-        if (info.startsWith('py edit') || info.startsWith('python edit')) {
+        for (const check of ['py edit','python edit','py m-edit','python m-edit']){
+          if (info.startsWith(check)) {
+            // 返回定制的 PyScriptEditor 组件
+            info = info.replace(check,'')
 
-          // 返回定制的 PyScriptEditor 组件
-          const infos = info.split(/\s+/)
-          if (infos.length>2){
-            return `<pre type="py-editor" env="${infos[2]}">${token.content}</pre>`
-          } else {
-            return `<pre type="py-editor">${token.content}</pre>`
+            let add = (check==='py m-edit' || check==='python m-edit')?'mpy':'py'
+
+            if (info){
+              return `<pre type="${add}-editor" ${info.trim()}>${token.content}</pre>`
+            } else {
+              return `<pre type="${add}-editor">${token.content}</pre>`
+            }
           }
         }
         // 默认渲染方式
