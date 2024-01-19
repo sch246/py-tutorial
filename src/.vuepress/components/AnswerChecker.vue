@@ -20,9 +20,10 @@ const props = defineProps({
 
 // const confetti = new JSConfetti()
 const audio = ref(null)
+let confetti
 
 function celebrate() {
-    // confetti.addConfetti()
+    confetti.addConfetti()
     audio.value.play();
 }
 
@@ -47,6 +48,7 @@ function checking(){
 
 
 onMounted(()=>{
+    confetti = new JSConfetti()
     wait(()=>target.value.querySelector('.py-editor-box .py-editor-input .py-editor-run-button'),3000)
     .then(button=>button.addEventListener("click", checking))
 })
