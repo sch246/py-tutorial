@@ -11,18 +11,18 @@
 <script setup>
 import {onMounted, ref, onUnmounted} from 'vue'
 import {counter, wait} from './utils.js'
-import JSConfetti from 'js-confetti'
+// import JSConfetti from 'js-confetti'
 
 const props = defineProps({
     answer: String,
     timeout: Number,
 })
 
-const confetti = new JSConfetti()
+// const confetti = new JSConfetti()
 const audio = ref(null)
 
 function celebrate() {
-    confetti.addConfetti()
+    // confetti.addConfetti()
     audio.value.play();
 }
 
