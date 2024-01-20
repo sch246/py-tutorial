@@ -1,11 +1,5 @@
 <template>
 <audio src="/wow2.mp3" ref="audio"></audio>
-<pre type="py-editor" env="test" :target="result">
-<slot></slot>
-</pre>
-<div :id="result" ref="target">
-
-</div>
 </template>
 
 <script setup>
@@ -14,6 +8,7 @@ import {counter, wait} from './utils.js'
 // import JSConfetti from 'js-confetti'
 
 const props = defineProps({
+    target: String,
     answer: String,
     timeout: Number,
 })
@@ -28,11 +23,11 @@ function celebrate() {
 }
 
 const result = 'result-'+counter()
-const target = ref(null)
+let target
 
 
 function checking(){
-    wait(()=>target.value.querySelector('.py-editor-box .py-editor-output'),3000)
+    wait(()=>target.querySelector('.py-editor-box .py-editor-output'),3000)
     .then(output=>{
         wait(()=>output.innerHTML===props.answer, props.timeout||10000)
         .then(()=>{
@@ -46,8 +41,9 @@ function checking(){
 
 
 onMounted(()=>{
+    target = document.getElementById(props.target)
     confetti = new JSConfetti()
-    wait(()=>target.value.querySelector('.py-editor-box .py-editor-input .py-editor-run-button'),3000)
+    wait(()=>target.querySelector('.py-editor-box .py-editor-input .py-editor-run-button'),3000)
     .then(button=>button.addEventListener("click", checking))
 })
 
