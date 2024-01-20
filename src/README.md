@@ -7,7 +7,7 @@ heroText: python tutorial
 tagline: 我的 python 教程
 actions:
   - text: 开始
-    link: /python/0.html
+    link: /python/
     type: primary
 
   - text: 关于我
