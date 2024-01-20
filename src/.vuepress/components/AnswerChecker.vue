@@ -3,14 +3,11 @@
 <div v-show="show">
     <slot></slot>
 </div>
-<div v-show="show">
-    <slot></slot>
-</div>
 </template>
 
 <script setup>
 import {onMounted, ref, onUnmounted} from 'vue'
-import {counter, wait} from './utils.js'
+import {wait} from './utils.js'
 // import JSConfetti from 'js-confetti'
 
 const props = defineProps({
