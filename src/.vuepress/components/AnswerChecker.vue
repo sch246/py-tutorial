@@ -3,6 +3,9 @@
 <div v-show="show">
     <slot></slot>
 </div>
+<div v-show="show">
+    <slot></slot>
+</div>
 </template>
 
 <script setup>
@@ -18,6 +21,7 @@ const props = defineProps({
 
 // const confetti = new JSConfetti()
 const audio = ref(null)
+let show = ref(false)
 let show = ref(false)
 let confetti
 
