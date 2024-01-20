@@ -17,7 +17,7 @@ function wait(getter, timeout=1000){
         },100)
         setTimeout(()=>{
             clearInterval(loop)
-            rej("didn't found element")
+            rej("didn't found element: time out")
         }, timeout)
     })
 }

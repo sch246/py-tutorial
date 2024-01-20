@@ -66,7 +66,7 @@ function checking(){
             }
         })
         .catch(e=>{
-            alert('运行超时!\n'+e)
+            alert('错误:\n'+e)
         })
     })
 }
