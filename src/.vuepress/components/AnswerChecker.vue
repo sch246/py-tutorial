@@ -27,7 +27,7 @@ function celebrate() {
 
     show.value = true
 
-    if ('hint-container' in target.parentNode.classList){
+    if (target.parentNode.classList.contains('hint-container')){
         // 只有在框框里才会播放音乐啥的
         confetti.addConfetti()
 
@@ -44,7 +44,7 @@ function celebrate() {
 }
 
 function wrongAnswer(){
-    if ('hint-container' in target.parentNode.classList){
+    if (target.parentNode.classList.contains('hint-container')){
         let classList = target.parentNode.classList
         classList.remove('important')
         classList.remove('tip')
