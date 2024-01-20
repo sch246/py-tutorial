@@ -1,5 +1,8 @@
 <template>
 <audio src="/wow2.mp3" ref="audio"></audio>
+<div v-show="show">
+    <slot></slot>
+</div>
 </template>
 
 <script setup>
@@ -15,23 +18,47 @@ const props = defineProps({
 
 // const confetti = new JSConfetti()
 const audio = ref(null)
+let show = ref(false)
 let confetti
 
+let target
+let button
 function celebrate() {
+
     confetti.addConfetti()
+
     audio.value.play();
+
+    show.value = true
+
+    let classList = target.parentNode.classList
+    classList.remove('important')
+    classList.remove('warning')
+    classList.add('tip')
+
+    // button.removeEventListener("click", checking)
+
 }
 
-const result = 'result-'+counter()
-let target
+function wrongAnswer(){
+    let classList = target.parentNode.classList
+    classList.remove('important')
+    classList.remove('tip')
+    classList.add('warning')
+}
+
 
 
 function checking(){
-    wait(()=>target.querySelector('.py-editor-box .py-editor-output'),3000)
+    wait(()=>target.querySelector('.py-editor-box .py-editor-output'), 3000)
     .then(output=>{
-        wait(()=>output.innerHTML===props.answer, props.timeout||10000)
+        wait(()=>target.getAttribute('state')==='finished', props.timeout||10000)
         .then(()=>{
-            celebrate()
+            if (output.innerHTML===props.answer){
+                celebrate()
+            } else {
+                wrongAnswer()
+            }
         })
         .catch(()=>{
             alert('运行超时!')
@@ -43,8 +70,10 @@ function checking(){
 onMounted(()=>{
     target = document.getElementById(props.target)
     confetti = new JSConfetti()
-    wait(()=>target.querySelector('.py-editor-box .py-editor-input .py-editor-run-button'),3000)
-    .then(button=>button.addEventListener("click", checking))
+    wait(()=>target.querySelector('.py-editor-box .py-editor-input .py-editor-run-button'), 3000)
+    .then(button=>{
+        button.addEventListener("click", checking)
+    })
 })
 
 onUnmounted(()=>{
