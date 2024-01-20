@@ -25,26 +25,31 @@ let target
 let button
 function celebrate() {
 
-    confetti.addConfetti()
-
-    audio.value.play();
-
     show.value = true
 
-    let classList = target.parentNode.classList
-    classList.remove('important')
-    classList.remove('warning')
-    classList.add('tip')
+    if (target.parentNode.classList.includes('hint-container')){
+        // 只有在框框里才会播放音乐啥的
+        confetti.addConfetti()
+
+        audio.value.play();
+
+        let classList = target.parentNode.classList
+        classList.remove('important')
+        classList.remove('warning')
+        classList.add('tip')
+    }
 
     // button.removeEventListener("click", checking)
 
 }
 
 function wrongAnswer(){
-    let classList = target.parentNode.classList
-    classList.remove('important')
-    classList.remove('tip')
-    classList.add('warning')
+    if (target.parentNode.classList.includes('hint-container')){
+        let classList = target.parentNode.classList
+        classList.remove('important')
+        classList.remove('tip')
+        classList.add('warning')
+    }
 }
 
 
