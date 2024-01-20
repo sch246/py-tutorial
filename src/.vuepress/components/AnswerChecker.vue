@@ -65,8 +65,8 @@ function checking(){
                 wrongAnswer()
             }
         })
-        .catch(()=>{
-            alert('运行超时!')
+        .catch(e=>{
+            alert('运行超时!\n'+e)
         })
     })
 }
