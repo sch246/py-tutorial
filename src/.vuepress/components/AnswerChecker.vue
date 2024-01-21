@@ -59,7 +59,7 @@ function checking(){
     .then(output=>{
         wait(()=>target.getAttribute('state')==='finished', props.timeout||10000)
         .then(()=>{
-            if (props.answer===undefined || output.innerHTML===props.answer){
+            if (props.answer===undefined || output.innerHTML.includes(props.answer)){
                 celebrate()
             } else {
                 wrongAnswer()
